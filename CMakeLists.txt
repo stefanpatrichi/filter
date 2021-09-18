@@ -14,5 +14,3 @@ file(
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
-
-message(CXXFLAGS=${CMAKE_CXX_FLAGS})
