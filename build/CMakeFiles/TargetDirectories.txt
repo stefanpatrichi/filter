@@ -1,0 +1,3 @@
+/home/stefan/github/filter/build/CMakeFiles/rebuild_cache.dir
+/home/stefan/github/filter/build/CMakeFiles/edit_cache.dir
+/home/stefan/github/filter/build/CMakeFiles/filter.dir

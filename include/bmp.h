@@ -52,11 +52,12 @@ struct BITMAPINFOHEADER {
  * https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-rgbtriple
  */
 struct RGBTRIPLE {
-  WORD rgbtBlue;
-  WORD rgbtGreen;
-  WORD rgbtRed;
+  BYTE rgbtBlue;
+  BYTE rgbtGreen;
+  BYTE rgbtRed;
 
-  RGBTRIPLE(int blue, int green, int red);
+  RGBTRIPLE();
+  RGBTRIPLE(BYTE blue, BYTE green, BYTE red);
   RGBTRIPLE(const RGBTRIPLE&);
   RGBTRIPLE& operator=(RGBTRIPLE);
 
@@ -66,12 +67,27 @@ struct RGBTRIPLE {
   RGBTRIPLE operator-(const RGBTRIPLE&);
 } __attribute__((__packed__));
 
+struct BIGRGBTRIPLE {
+  WORD rgbtBlue;
+  WORD rgbtGreen;
+  WORD rgbtRed;
+
+  BIGRGBTRIPLE();
+  BIGRGBTRIPLE(WORD blue, WORD green, WORD red);
+  BIGRGBTRIPLE(const BIGRGBTRIPLE&);
+  BIGRGBTRIPLE& operator=(BIGRGBTRIPLE);
+
+  BIGRGBTRIPLE& operator+=(const BIGRGBTRIPLE&);
+  BIGRGBTRIPLE& operator-=(const BIGRGBTRIPLE&);
+  BIGRGBTRIPLE operator+(const BIGRGBTRIPLE&);
+  BIGRGBTRIPLE operator-(const BIGRGBTRIPLE&);
+} __attribute__((__packed__));
+
 
 
 class BMPImage {
 public:
   BMPImage(const char* filename);
-  BMPImage(int height, int width);
 
   BMPImage(BMPImage&&)            = delete;
   BMPImage(const BMPImage&)       = delete;
@@ -84,7 +100,7 @@ public:
 private:
   BITMAPFILEHEADER file_header;
   BITMAPINFOHEADER info_header;
-  std::vector<std::vector<WORD>> data;
+  std::vector<std::vector<RGBTRIPLE>> data;
 
   void readHeaders(std::ifstream&);
   void writeHeaders(std::ofstream&);
