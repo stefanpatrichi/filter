@@ -28,7 +28,7 @@ struct BITMAPFILEHEADER {
 } __attribute__((__packed__));
 
 /**
- * a BITMAPINFOHEADER contains info about the dimensions and colour size of a BMP file
+ * a BITMAPINFOHEADER contains info about the dimensions and colour format of a BMP file
  *
  * https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-bitmapinfoheader
  */
