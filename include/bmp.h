@@ -57,14 +57,9 @@ struct RGBTRIPLE {
   BYTE rgbtRed;
 
   RGBTRIPLE();
-  RGBTRIPLE(BYTE blue, BYTE green, BYTE red);
+  RGBTRIPLE(BYTE, BYTE, BYTE);
   RGBTRIPLE(const RGBTRIPLE&);
-  RGBTRIPLE& operator=(RGBTRIPLE);
-
-  RGBTRIPLE& operator+=(const RGBTRIPLE&);
-  RGBTRIPLE& operator-=(const RGBTRIPLE&);
-  RGBTRIPLE operator+(const RGBTRIPLE&);
-  RGBTRIPLE operator-(const RGBTRIPLE&);
+  RGBTRIPLE& operator=(const RGBTRIPLE&);
 } __attribute__((__packed__));
 
 struct BIGRGBTRIPLE {
@@ -73,14 +68,15 @@ struct BIGRGBTRIPLE {
   WORD rgbtRed;
 
   BIGRGBTRIPLE();
-  BIGRGBTRIPLE(WORD blue, WORD green, WORD red);
-  BIGRGBTRIPLE(const BIGRGBTRIPLE&);
-  BIGRGBTRIPLE& operator=(BIGRGBTRIPLE);
+  BIGRGBTRIPLE(WORD, WORD, WORD);
 
   BIGRGBTRIPLE& operator+=(const BIGRGBTRIPLE&);
   BIGRGBTRIPLE& operator-=(const BIGRGBTRIPLE&);
   BIGRGBTRIPLE operator+(const BIGRGBTRIPLE&);
   BIGRGBTRIPLE operator-(const BIGRGBTRIPLE&);
+  BIGRGBTRIPLE& operator+=(const RGBTRIPLE&);
+  BIGRGBTRIPLE operator+(const RGBTRIPLE&);
+  BIGRGBTRIPLE& operator-=(const RGBTRIPLE&);
 } __attribute__((__packed__));
 
 
@@ -96,7 +92,7 @@ public:
 
   void read(const char* filename);
   void write(const char* filename);
-  void blur();
+  void blur(int radius);
 private:
   BITMAPFILEHEADER file_header;
   BITMAPINFOHEADER info_header;
@@ -105,3 +101,7 @@ private:
   void readHeaders(std::ifstream&);
   void writeHeaders(std::ofstream&);
 };
+
+// btor = BIGRGBTRIPLE to RGBTRIPLE
+// ! to be used with caution (potential overflow)
+RGBTRIPLE btor(const BIGRGBTRIPLE);
