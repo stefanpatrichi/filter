@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/stefan/github/filter/src/bmp.cpp" "CMakeFiles/filter.dir/src/bmp.cpp.o" "gcc" "CMakeFiles/filter.dir/src/bmp.cpp.o.d"
-  "/home/stefan/github/filter/src/filter.cpp" "CMakeFiles/filter.dir/src/filter.cpp.o" "gcc" "CMakeFiles/filter.dir/src/filter.cpp.o.d"
+  "/home/stefan/filter/src/bmp.cpp" "CMakeFiles/filter.dir/src/bmp.cpp.o" "gcc" "CMakeFiles/filter.dir/src/bmp.cpp.o.d"
+  "/home/stefan/filter/src/filter.cpp" "CMakeFiles/filter.dir/src/filter.cpp.o" "gcc" "CMakeFiles/filter.dir/src/filter.cpp.o.d"
   )
 
 # Targets to which this target links.

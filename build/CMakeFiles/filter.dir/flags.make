@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/stefan/github/filter/include -I/home/stefan/github/filter/src
+CXX_INCLUDES = -I/home/stefan/filter/include -I/home/stefan/filter/src
 
-CXX_FLAGS = -std=c++11 -Wall -Wextra -Wpedantic -O2
+CXX_FLAGS = 
 

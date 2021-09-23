@@ -72,11 +72,15 @@ struct BIGRGBTRIPLE {
 
   BIGRGBTRIPLE& operator+=(const BIGRGBTRIPLE&);
   BIGRGBTRIPLE& operator-=(const BIGRGBTRIPLE&);
-  BIGRGBTRIPLE operator+(const BIGRGBTRIPLE&);
-  BIGRGBTRIPLE operator-(const BIGRGBTRIPLE&);
+  BIGRGBTRIPLE  operator+(const BIGRGBTRIPLE&);
+  BIGRGBTRIPLE  operator-(const BIGRGBTRIPLE&);
   BIGRGBTRIPLE& operator+=(const RGBTRIPLE&);
-  BIGRGBTRIPLE operator+(const RGBTRIPLE&);
+  BIGRGBTRIPLE  operator+(const RGBTRIPLE&);
   BIGRGBTRIPLE& operator-=(const RGBTRIPLE&);
+  BIGRGBTRIPLE& operator/=(const int&);
+  BIGRGBTRIPLE  operator/(const int&);
+  BIGRGBTRIPLE& operator/=(int&&);
+  BIGRGBTRIPLE  operator/(int&&);
 } __attribute__((__packed__));
 
 
