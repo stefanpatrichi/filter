@@ -1,107 +1,88 @@
-#pragma once
+// BMP-related data types based on Microsoft's own
 
-#include <cstdint>
-#include <fstream>
-#include <vector>
+#include <stdint.h>
 
 /**
- * common data types
- * 
- * https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/efda8314-6e41-4837-8299-38ba0ee04b92
- */
-using BYTE  = uint8_t;
-using DWORD = uint32_t;
-using LONG  = int32_t;
-using WORD  = uint16_t;
-
-/**
- * a BITMAPFILEHEADER contains info about the type, size, layout of a BMP file
+ * Common Data Types
  *
- * https://docs.microsoft.com/en-gb/windows/win32/api/wingdi/ns-wingdi-bitmapfileheader
+ * The data types in this section are essentially aliases for C/C++
+ * primitive data types.
+ *
+ * Adapted from http://msdn.microsoft.com/en-us/library/cc230309.aspx.
+ * See http://en.wikipedia.org/wiki/Stdint.h for more on stdint.h.
  */
-struct BITMAPFILEHEADER {
-  WORD  bfType;
-  DWORD bfSize;
-  WORD  bfReserved1;
-  WORD  bfReserved2;
-  DWORD bfOffBits;
-} __attribute__((__packed__));
+typedef uint8_t  BYTE;
+typedef uint32_t DWORD;
+typedef int32_t  LONG;
+typedef uint16_t WORD;
 
 /**
- * a BITMAPINFOHEADER contains info about the dimensions and colour format of a BMP file
+ * BITMAPFILEHEADER
  *
- * https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-bitmapinfoheader
+ * The BITMAPFILEHEADER structure contains information about the type, size,
+ * and layout of a file that contains a DIB [device-independent bitmap].
+ *
+ * Adapted from http://msdn.microsoft.com/en-us/library/dd183374(VS.85).aspx.
  */
-struct BITMAPINFOHEADER {
-  DWORD biSize;
-  LONG  biWidth;
-  LONG  biHeight;
-  WORD  biPlanes;
-  WORD  biBitCount;
-  DWORD biCompression;
-  DWORD biSizeImage;
-  LONG  biXPelsPerMeter;
-  LONG  biYPelsPerMeter;
-  DWORD biClrUsed;
-  DWORD biClrImportant;
-} __attribute__((__packed__));
+typedef struct
+{
+    WORD   bfType;
+    DWORD  bfSize;
+    WORD   bfReserved1;
+    WORD   bfReserved2;
+    DWORD  bfOffBits;
+} __attribute__((__packed__))
+BITMAPFILEHEADER;
 
 /**
- * RGBTRIPLE describes a colour consisting of relative intensities of red, green and blue.
+ * BITMAPINFOHEADER
  *
- * https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-rgbtriple
+ * The BITMAPINFOHEADER structure contains information about the
+ * dimensions and color format of a DIB [device-independent bitmap].
+ *
+ * Adapted from http://msdn.microsoft.com/en-us/library/dd183376(VS.85).aspx.
  */
-struct RGBTRIPLE {
-  BYTE rgbtBlue;
-  BYTE rgbtGreen;
-  BYTE rgbtRed;
+typedef struct
+{
+    DWORD  biSize;
+    LONG   biWidth;
+    LONG   biHeight;
+    WORD   biPlanes;
+    WORD   biBitCount;
+    DWORD  biCompression;
+    DWORD  biSizeImage;
+    LONG   biXPelsPerMeter;
+    LONG   biYPelsPerMeter;
+    DWORD  biClrUsed;
+    DWORD  biClrImportant;
+} __attribute__((__packed__))
+BITMAPINFOHEADER;
 
-  RGBTRIPLE();
-  RGBTRIPLE(BYTE blue, BYTE green, BYTE red);
-  RGBTRIPLE(const RGBTRIPLE&);
-  RGBTRIPLE& operator=(RGBTRIPLE);
+/**
+ * RGBTRIPLE
+ *
+ * This structure describes a color consisting of relative intensities of
+ * red, green, and blue.
+ *
+ * Adapted from http://msdn.microsoft.com/en-us/library/aa922590.aspx.
+ */
+typedef struct
+{
+    BYTE  rgbtBlue;
+    BYTE  rgbtGreen;
+    BYTE  rgbtRed;
+} __attribute__((__packed__))
+RGBTRIPLE;
 
-  RGBTRIPLE& operator+=(const RGBTRIPLE&);
-  RGBTRIPLE& operator-=(const RGBTRIPLE&);
-  RGBTRIPLE operator+(const RGBTRIPLE&);
-  RGBTRIPLE operator-(const RGBTRIPLE&);
-} __attribute__((__packed__));
+// Convert image to grayscale
+void grayscale(int height, int width, RGBTRIPLE image[height][width]);
 
-struct BIGRGBTRIPLE {
-  WORD rgbtBlue;
-  WORD rgbtGreen;
-  WORD rgbtRed;
+// Reflect image horizontally
+void reflect(int height, int width, RGBTRIPLE image[height][width]);
 
-  BIGRGBTRIPLE();
-  BIGRGBTRIPLE(WORD blue, WORD green, WORD red);
-  BIGRGBTRIPLE(const BIGRGBTRIPLE&);
-  BIGRGBTRIPLE& operator=(BIGRGBTRIPLE);
+// Detect edges
+void edges(int height, int width, RGBTRIPLE image[height][width]);
 
-  BIGRGBTRIPLE& operator+=(const BIGRGBTRIPLE&);
-  BIGRGBTRIPLE& operator-=(const BIGRGBTRIPLE&);
-  BIGRGBTRIPLE operator+(const BIGRGBTRIPLE&);
-  BIGRGBTRIPLE operator-(const BIGRGBTRIPLE&);
-} __attribute__((__packed__));
+// Blur image
+void blur(int height, int width, RGBTRIPLE image[height][width]);
 
-
-
-class BMPImage {
-public:
-  BMPImage(const char* filename);
-
-  BMPImage(BMPImage&&)            = delete;
-  BMPImage(const BMPImage&)       = delete;
-  void operator=(BMPImage&&)      = delete;
-  void operator=(const BMPImage&) = delete;
-
-  void read(const char* filename);
-  void write(const char* filename);
-  void blur();
-private:
-  BITMAPFILEHEADER file_header;
-  BITMAPINFOHEADER info_header;
-  std::vector<std::vector<RGBTRIPLE>> data;
-
-  void readHeaders(std::ifstream&);
-  void writeHeaders(std::ofstream&);
-};

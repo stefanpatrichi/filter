@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/stefan/github/filter
+CMAKE_SOURCE_DIR = /home/stefan/filter
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/stefan/github/filter/build
+CMAKE_BINARY_DIR = /home/stefan/filter/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/filter.dir/depend.make
@@ -69,47 +69,47 @@ include CMakeFiles/filter.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/filter.dir/flags.make
 
-CMakeFiles/filter.dir/src/bmp.cpp.o: CMakeFiles/filter.dir/flags.make
-CMakeFiles/filter.dir/src/bmp.cpp.o: ../src/bmp.cpp
-CMakeFiles/filter.dir/src/bmp.cpp.o: CMakeFiles/filter.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stefan/github/filter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/filter.dir/src/bmp.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/filter.dir/src/bmp.cpp.o -MF CMakeFiles/filter.dir/src/bmp.cpp.o.d -o CMakeFiles/filter.dir/src/bmp.cpp.o -c /home/stefan/github/filter/src/bmp.cpp
+CMakeFiles/filter.dir/src/bmp.c.o: CMakeFiles/filter.dir/flags.make
+CMakeFiles/filter.dir/src/bmp.c.o: ../src/bmp.c
+CMakeFiles/filter.dir/src/bmp.c.o: CMakeFiles/filter.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stefan/filter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/filter.dir/src/bmp.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/filter.dir/src/bmp.c.o -MF CMakeFiles/filter.dir/src/bmp.c.o.d -o CMakeFiles/filter.dir/src/bmp.c.o -c /home/stefan/filter/src/bmp.c
 
-CMakeFiles/filter.dir/src/bmp.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/filter.dir/src/bmp.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stefan/github/filter/src/bmp.cpp > CMakeFiles/filter.dir/src/bmp.cpp.i
+CMakeFiles/filter.dir/src/bmp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/filter.dir/src/bmp.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stefan/filter/src/bmp.c > CMakeFiles/filter.dir/src/bmp.c.i
 
-CMakeFiles/filter.dir/src/bmp.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/filter.dir/src/bmp.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stefan/github/filter/src/bmp.cpp -o CMakeFiles/filter.dir/src/bmp.cpp.s
+CMakeFiles/filter.dir/src/bmp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/filter.dir/src/bmp.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stefan/filter/src/bmp.c -o CMakeFiles/filter.dir/src/bmp.c.s
 
-CMakeFiles/filter.dir/src/filter.cpp.o: CMakeFiles/filter.dir/flags.make
-CMakeFiles/filter.dir/src/filter.cpp.o: ../src/filter.cpp
-CMakeFiles/filter.dir/src/filter.cpp.o: CMakeFiles/filter.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stefan/github/filter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/filter.dir/src/filter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/filter.dir/src/filter.cpp.o -MF CMakeFiles/filter.dir/src/filter.cpp.o.d -o CMakeFiles/filter.dir/src/filter.cpp.o -c /home/stefan/github/filter/src/filter.cpp
+CMakeFiles/filter.dir/src/filter.c.o: CMakeFiles/filter.dir/flags.make
+CMakeFiles/filter.dir/src/filter.c.o: ../src/filter.c
+CMakeFiles/filter.dir/src/filter.c.o: CMakeFiles/filter.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stefan/filter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/filter.dir/src/filter.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/filter.dir/src/filter.c.o -MF CMakeFiles/filter.dir/src/filter.c.o.d -o CMakeFiles/filter.dir/src/filter.c.o -c /home/stefan/filter/src/filter.c
 
-CMakeFiles/filter.dir/src/filter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/filter.dir/src/filter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stefan/github/filter/src/filter.cpp > CMakeFiles/filter.dir/src/filter.cpp.i
+CMakeFiles/filter.dir/src/filter.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/filter.dir/src/filter.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stefan/filter/src/filter.c > CMakeFiles/filter.dir/src/filter.c.i
 
-CMakeFiles/filter.dir/src/filter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/filter.dir/src/filter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stefan/github/filter/src/filter.cpp -o CMakeFiles/filter.dir/src/filter.cpp.s
+CMakeFiles/filter.dir/src/filter.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/filter.dir/src/filter.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stefan/filter/src/filter.c -o CMakeFiles/filter.dir/src/filter.c.s
 
 # Object files for target filter
 filter_OBJECTS = \
-"CMakeFiles/filter.dir/src/bmp.cpp.o" \
-"CMakeFiles/filter.dir/src/filter.cpp.o"
+"CMakeFiles/filter.dir/src/bmp.c.o" \
+"CMakeFiles/filter.dir/src/filter.c.o"
 
 # External object files for target filter
 filter_EXTERNAL_OBJECTS =
 
-filter: CMakeFiles/filter.dir/src/bmp.cpp.o
-filter: CMakeFiles/filter.dir/src/filter.cpp.o
+filter: CMakeFiles/filter.dir/src/bmp.c.o
+filter: CMakeFiles/filter.dir/src/filter.c.o
 filter: CMakeFiles/filter.dir/build.make
 filter: CMakeFiles/filter.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stefan/github/filter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable filter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stefan/filter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable filter"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/filter.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -121,6 +121,6 @@ CMakeFiles/filter.dir/clean:
 .PHONY : CMakeFiles/filter.dir/clean
 
 CMakeFiles/filter.dir/depend:
-	cd /home/stefan/github/filter/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/stefan/github/filter /home/stefan/github/filter /home/stefan/github/filter/build /home/stefan/github/filter/build /home/stefan/github/filter/build/CMakeFiles/filter.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/stefan/filter/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/stefan/filter /home/stefan/filter /home/stefan/filter/build /home/stefan/filter/build /home/stefan/filter/build/CMakeFiles/filter.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/filter.dir/depend
 

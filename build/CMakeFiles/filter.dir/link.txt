@@ -1,1 +1,1 @@
-/usr/bin/c++ -std=c++11 -Wall -Wextra -Wpedantic -O2 CMakeFiles/filter.dir/src/bmp.cpp.o CMakeFiles/filter.dir/src/filter.cpp.o -o filter 
+/usr/bin/cc  -lm CMakeFiles/filter.dir/src/bmp.c.o CMakeFiles/filter.dir/src/filter.c.o -o filter 

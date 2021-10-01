@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/stefan/github/filter
+CMAKE_SOURCE_DIR = /home/stefan/filter
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/stefan/github/filter/build
+CMAKE_BINARY_DIR = /home/stefan/filter/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/stefan/github/filter/build/CMakeFiles /home/stefan/github/filter/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stefan/filter/build/CMakeFiles /home/stefan/filter/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/stefan/github/filter/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stefan/filter/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,53 +129,53 @@ filter/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/build
 .PHONY : filter/fast
 
-src/bmp.o: src/bmp.cpp.o
+src/bmp.o: src/bmp.c.o
 .PHONY : src/bmp.o
 
 # target to build an object file
-src/bmp.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/bmp.cpp.o
-.PHONY : src/bmp.cpp.o
+src/bmp.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/bmp.c.o
+.PHONY : src/bmp.c.o
 
-src/bmp.i: src/bmp.cpp.i
+src/bmp.i: src/bmp.c.i
 .PHONY : src/bmp.i
 
 # target to preprocess a source file
-src/bmp.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/bmp.cpp.i
-.PHONY : src/bmp.cpp.i
+src/bmp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/bmp.c.i
+.PHONY : src/bmp.c.i
 
-src/bmp.s: src/bmp.cpp.s
+src/bmp.s: src/bmp.c.s
 .PHONY : src/bmp.s
 
 # target to generate assembly for a file
-src/bmp.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/bmp.cpp.s
-.PHONY : src/bmp.cpp.s
+src/bmp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/bmp.c.s
+.PHONY : src/bmp.c.s
 
-src/filter.o: src/filter.cpp.o
+src/filter.o: src/filter.c.o
 .PHONY : src/filter.o
 
 # target to build an object file
-src/filter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/filter.cpp.o
-.PHONY : src/filter.cpp.o
+src/filter.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/filter.c.o
+.PHONY : src/filter.c.o
 
-src/filter.i: src/filter.cpp.i
+src/filter.i: src/filter.c.i
 .PHONY : src/filter.i
 
 # target to preprocess a source file
-src/filter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/filter.cpp.i
-.PHONY : src/filter.cpp.i
+src/filter.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/filter.c.i
+.PHONY : src/filter.c.i
 
-src/filter.s: src/filter.cpp.s
+src/filter.s: src/filter.c.s
 .PHONY : src/filter.s
 
 # target to generate assembly for a file
-src/filter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/filter.cpp.s
-.PHONY : src/filter.cpp.s
+src/filter.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/filter.c.s
+.PHONY : src/filter.c.s
 
 # Help Target
 help:
