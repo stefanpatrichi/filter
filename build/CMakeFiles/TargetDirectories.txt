@@ -1,3 +1,0 @@
-/home/stefan/filter/build/CMakeFiles/rebuild_cache.dir
-/home/stefan/filter/build/CMakeFiles/edit_cache.dir
-/home/stefan/filter/build/CMakeFiles/filter.dir
