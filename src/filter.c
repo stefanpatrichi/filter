@@ -60,8 +60,8 @@ int main(int argc, char *argv[]) {
     return 6;
   }
 
-  int height = abs(bi.biHeight);
-  int width = bi.biWidth;
+  const int height = abs(bi.biHeight);
+  const int width = bi.biWidth;
 
   // allocate memory for image
   RGBTRIPLE(*image)
@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
   }
 
   // determine padding for scanlines
-  int padding = (4 - (width * sizeof(RGBTRIPLE)) % 4) % 4;
+  const int padding = (4 - (width * sizeof(RGBTRIPLE)) % 4) % 4;
 
   for (int i = 0; i < height; i++) {
     fread(image[i], sizeof(RGBTRIPLE), width, inptr);
