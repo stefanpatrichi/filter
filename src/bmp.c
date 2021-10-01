@@ -9,52 +9,44 @@ typedef struct {
   short rgbtBlue;
   short rgbtGreen;
   short rgbtRed;
-} __attribute__((__packed__)) BIG_RGBTRIPLE;
+} __attribute__((__packed__)) BIGRGBTRIPLE;
 
-// Swap two RGBTRIPLEs
+// swap two RGBTRIPLEs
 void swap(RGBTRIPLE *x, RGBTRIPLE *y) {
   RGBTRIPLE aux = *x;
   *x = *y;
   *y = aux;
-  return;
 }
 
-// Convert image to grayscale
+// convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
   for (int l = 0; l < height; ++l) {
     for (int c = 0; c < width; ++c) {
       // set all three colours to their average
       image[l][c].rgbtBlue = image[l][c].rgbtGreen = image[l][c].rgbtRed =
-          round((float)(image[l][c].rgbtBlue + image[l][c].rgbtGreen +
-                        image[l][c].rgbtRed) /
-                3);
+          round((float)(image[l][c].rgbtBlue + image[l][c].rgbtGreen + image[l][c].rgbtRed) / 3);
     }
   }
-  return;
 }
 
-// Reflect image horizontally
+// reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width]) {
   for (int l = 0; l < height; ++l) {
-    for (int c = 0; c < width / 2 + width % 2;
-         ++c)  // loop through half of the columns
-    {
+    // loop through half of the columns
+    for (int c = 0; c < width / 2 + width % 2; ++c) {
       // swap current pixel and the one symmetrical to current
       swap(&image[l][c], &image[l][width - 1 - c]);
     }
   }
-  return;
 }
 
-// Blur image
+// blur image
 void blur(int height, int width, RGBTRIPLE image[height][width]) {
   RGBTRIPLE aux[height][width];  // matrix to perform calculations on
-  BIG_RGBTRIPLE sum;
+  BIGRGBTRIPLE sum;
 
-  for (int l = 0; l < height; ++l)  // loop rows
-  {
-    for (int c = 0; c < width; ++c)  // loop columns
-    {
+  for (int l = 0; l < height; ++l) {
+    for (int c = 0; c < width; ++c) {
       // initialise sum and counter
       sum.rgbtBlue = 0;
       sum.rgbtGreen = 0;
@@ -64,9 +56,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width]) {
       // check surroundings
       for (int k = -RANGE / 2; k <= RANGE / 2; ++k) {
         for (int h = -RANGE / 2; h <= RANGE / 2; ++h) {
-          if (l + k >= 0 && l + k < height && c + h >= 0 &&
-              c + h < width)  // check if pixel in inside
-          {
+          // check if pixel in inside
+          if (l + k >= 0 && l + k < height && c + h >= 0 && c + h < width) {
             sum.rgbtBlue += image[l + k][c + h].rgbtBlue;
             sum.rgbtGreen += image[l + k][c + h].rgbtGreen;
             sum.rgbtRed += image[l + k][c + h].rgbtRed;
@@ -90,13 +81,12 @@ void blur(int height, int width, RGBTRIPLE image[height][width]) {
       image[l][c].rgbtRed = aux[l][c].rgbtRed;
     }
   }
-  return;
 }
 
-// Cap colour at 255
+// cap colour at 255
 BYTE cap(short val) { return (val > 255) ? 255 : val; }
 
-// Detect edges
+// detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width]) {
   // initialise Sobel kernels
   int Gx[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
@@ -117,15 +107,13 @@ void edges(int height, int width, RGBTRIPLE image[height][width]) {
   for (int l = 0; l < height; ++l) {
     for (int c = 0; c < width; ++c) {
       short Gx_red, Gy_red, Gx_blue, Gy_blue, Gx_green, Gy_green;
-      Gx_red = Gy_red = Gx_blue = Gy_blue = Gx_green = Gy_green =
-          0;  // initialise
+      Gx_red = Gy_red = Gx_blue = Gy_blue = Gx_green = Gy_green = 0;
 
       // check surroundings
       for (int k = -RANGE / 2; k <= RANGE / 2; ++k) {
         for (int h = -RANGE / 2; h <= RANGE / 2; ++h) {
-          if (l + k >= 0 && l + k < height && c + h >= 0 &&
-              c + h < width)  // check if pixel in inside
-          {
+          // check if pixel in inside
+          if (l + k >= 0 && l + k < height && c + h >= 0 && c + h < width) {
             Gx_red += aux[l + k][c + h].rgbtRed * Gx[k + 1][h + 1];
             Gy_red += aux[l + k][c + h].rgbtRed * Gy[k + 1][h + 1];
             Gx_blue += aux[l + k][c + h].rgbtBlue * Gx[k + 1][h + 1];
@@ -146,6 +134,4 @@ void edges(int height, int width, RGBTRIPLE image[height][width]) {
       image[l][c].rgbtRed = red;
     }
   }
-
-  return;
 }

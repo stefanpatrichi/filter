@@ -68,14 +68,14 @@ typedef struct {
   BYTE rgbtRed;
 } __attribute__((__packed__)) RGBTRIPLE;
 
-// Convert image to grayscale
+// convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width]);
 
-// Reflect image horizontally
+// reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width]);
 
-// Detect edges
+// detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width]);
 
-// Blur image
+// blur image
 void blur(int height, int width, RGBTRIPLE image[height][width]);
