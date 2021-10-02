@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[]) {
   // allowable filters
-  char *filters = "begr";
+  char *filters = "bgr";
 
   // get filter flag, check validity
   char filter = getopt(argc, argv, filters);
@@ -64,8 +64,7 @@ int main(int argc, char *argv[]) {
   const int width = bi.biWidth;
 
   // allocate memory for image
-  RGBTRIPLE(*image)
-  [width] = calloc(height, width * sizeof(RGBTRIPLE));
+  RGBTRIPLE(*image)[width] = calloc(height, width * sizeof(RGBTRIPLE));
   if (image == NULL) {
     fprintf(stderr, "Not enough memory to store image.\n");
     fclose(outptr);
@@ -86,10 +85,6 @@ int main(int argc, char *argv[]) {
   switch (filter) {
     case 'b':
       blur(height, width, image);
-      break;
-
-    case 'e':
-      edges(height, width, image);
       break;
 
     case 'g':

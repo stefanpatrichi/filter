@@ -74,8 +74,5 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]);
 // reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width]);
 
-// detect edges
-void edges(int height, int width, RGBTRIPLE image[height][width]);
-
 // blur image
 void blur(int height, int width, RGBTRIPLE image[height][width]);
