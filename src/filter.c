@@ -1,10 +1,16 @@
+#include <errno.h>
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "bmp.h"
 
+static const int DEFAULT_RADIUS = 2, BASE = 10;
+
 int main(int argc, char *argv[]) {
+  int radius;
+  char *endptr;
+
   // allowable filters
   char *filters = "bgr";
 
@@ -12,19 +18,19 @@ int main(int argc, char *argv[]) {
   char filter = getopt(argc, argv, filters);
   if (filter == '?') {
     fprintf(stderr, "Invalid filter.\n");
-    return 1;
+    return EXIT_FAILURE;
   }
 
   // ensure only one filter
   if (getopt(argc, argv, filters) != -1) {
     fprintf(stderr, "Only one filter allowed.\n");
-    return 2;
+    return EXIT_FAILURE;
   }
 
   // ensure proper usage
-  if (argc != optind + 2) {
-    fprintf(stderr, "Usage: filter [flag] infile outfile\n");
-    return 3;
+  if (argc != optind + 2 && argc != optind + 3) {
+    fprintf(stderr, "Usage: filter [flag] infile outfile [radius (for blurring)]\n");
+    return EXIT_FAILURE;
   }
 
   char *infile = argv[optind];
@@ -33,14 +39,29 @@ int main(int argc, char *argv[]) {
   FILE *inptr = fopen(infile, "r");
   if (inptr == NULL) {
     fprintf(stderr, "Could not open %s.\n", infile);
-    return 4;
+    return EXIT_FAILURE;
   }
+
+  // if radius was given assign it, else set to default radius
+  if (argc == optind + 3) { 
+    errno = 0;  
+    radius = strtol(argv[optind + 2], &endptr, BASE);
+    if (errno) {
+      perror("strtol: radius");
+      return EXIT_FAILURE;
+    }
+
+    if (endptr == argv[optind + 2]) {
+      fprintf(stderr, "strtol: radius: No digits were found\n");
+      return EXIT_FAILURE;
+    }
+  } else radius = DEFAULT_RADIUS;
 
   FILE *outptr = fopen(outfile, "w");
   if (outptr == NULL) {
     fclose(inptr);
     fprintf(stderr, "Could not create %s.\n", outfile);
-    return 5;
+    return EXIT_FAILURE;
   }
 
   // read infile's BITMAPFILEHEADER
@@ -57,7 +78,7 @@ int main(int argc, char *argv[]) {
     fclose(outptr);
     fclose(inptr);
     fprintf(stderr, "Unsupported file format.\n");
-    return 6;
+    return EXIT_FAILURE;
   }
 
   const int height = abs(bi.biHeight);
@@ -69,7 +90,7 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "Not enough memory to store image.\n");
     fclose(outptr);
     fclose(inptr);
-    return 7;
+    return EXIT_FAILURE;
   }
 
   // determine padding for scanlines
@@ -84,7 +105,7 @@ int main(int argc, char *argv[]) {
 
   switch (filter) {
     case 'b':
-      blur(height, width, image);
+      blur(height, width, image, radius);
       break;
 
     case 'g':

@@ -2,8 +2,6 @@
 
 #include <math.h>
 
-static const int RANGE = 6;
-
 // RGBTRIPLE used for sum to avoid overflows
 typedef struct {
   short rgbtBlue;
@@ -41,7 +39,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width]) {
 }
 
 // blur image
-void blur(int height, int width, RGBTRIPLE image[height][width]) {
+void blur(int height, int width, RGBTRIPLE image[height][width], const int radius) {
   RGBTRIPLE aux[height][width];  // matrix to perform calculations on
   BIGRGBTRIPLE sum;
 
@@ -54,8 +52,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width]) {
       int count = 0;
 
       // check surroundings
-      for (int k = -RANGE / 2; k <= RANGE / 2; ++k) {
-        for (int h = -RANGE / 2; h <= RANGE / 2; ++h) {
+      for (int k = -radius / 2; k <= radius / 2; ++k) {
+        for (int h = -radius / 2; h <= radius / 2; ++h) {
           // check if pixel in inside
           if (l + k >= 0 && l + k < height && c + h >= 0 && c + h < width) {
             sum.rgbtBlue += image[l + k][c + h].rgbtBlue;

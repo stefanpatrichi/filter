@@ -75,4 +75,4 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]);
 void reflect(int height, int width, RGBTRIPLE image[height][width]);
 
 // blur image
-void blur(int height, int width, RGBTRIPLE image[height][width]);
+void blur(int height, int width, RGBTRIPLE image[height][width], const int radius);
